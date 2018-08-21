@@ -28,6 +28,7 @@
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "enableTranslation": false,
-    "herokuDeployType": "git"
+    "herokuDeployType": "git",
+    "herokuAppName": "hrninja"
   }
 }
