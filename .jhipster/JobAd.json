@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "searchQueryId",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20180822181144",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "job_ad",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

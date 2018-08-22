@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span>Search Queries</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-search-query" [routerLink]="['/search-query/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Search Query
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="searchQueries">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Position</span></th>
+            <th><span>Location</span></th>
+            <th><span>Company</span></th>
+            <th><span>Query Date</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let searchQuery of searchQueries ;trackBy: trackId">
+                <td><a [routerLink]="['/search-query', searchQuery.id, 'view' ]">{{searchQuery.id}}</a></td>
+                <td>{{searchQuery.position}}</td>
+                <td>{{searchQuery.location}}</td>
+                <td>{{searchQuery.company}}</td>
+                <td>{{searchQuery.queryDate | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/search-query', searchQuery.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/search-query', searchQuery.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'search-query/'+ searchQuery.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-package com.krzysztof.jobseeker.service.parser;
+package com.krzysztof.jobseeker.service.business.crawler;
 
 import com.krzysztof.jobseeker.model.enumeration.WebsiteName;
 import com.krzysztof.jobseeker.model.websitedetails.Praca;

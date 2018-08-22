@@ -4,6 +4,7 @@ import { JhiEventManager } from 'ng-jhipster';
 import { LoginModalService, Principal, Account } from 'app/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/filter';
+import { IJobAd } from 'app/shared/model/job-ad.model';
 
 @Component({
     selector: 'jhi-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
     miejscowosc: string;
     pracodawca: string;
 
-    resp;
+    resp: IJobAd[];
 
     account: Account;
     modalRef: NgbModalRef;
@@ -44,19 +45,21 @@ export class HomeComponent implements OnInit {
     }
 
     search(stanowisko, miejscowosc, pracodawca) {
-        this.getData(stanowisko, miejscowosc, pracodawca).subscribe(
-            response => {
-              this.resp = response;
-              console.log(response);
-            },
-            error => {
-              console.log(error);
-            }
-          );
-    }
+        this.http.post<IJobAd[]>('http://localhost:8080/search', {
+      position: stanowisko,
+      location: miejscowosc,
+      company: pracodawca
+    })
+      .subscribe(
+        res => {
+          this.resp = res;
+          console.log(this.resp);
 
-    getData(stanowisko, miejscowosc, pracodawca) {
-        return this.http.get('http://localhost:8080/jobAd?position=java&location=katowice');
+        },
+        err => {
+          console.log('Error occured');
+        }
+      );
     }
 
     isAuthenticated() {
